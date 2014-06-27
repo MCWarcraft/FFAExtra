@@ -1,0 +1,11 @@
+name: FFAExtra
+main: randy.ffaextra.main
+version: 1.0
+depend: [HonorPoints, Kits, CorePlugin]
+commands:
+  tower:
+    description: Tower commands
+    usage: /<command>
+  flat:
+    description: Flat commands
+    usage: /<command>
