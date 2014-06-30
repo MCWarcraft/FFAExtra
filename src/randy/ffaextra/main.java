@@ -13,6 +13,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import core.Custody.Custody;
 import randy.core.CoreAPI;
 import randy.core.CoreScoreboard;
 import randy.core.tools.CoreDatabase;
@@ -25,6 +26,7 @@ public class main extends JavaPlugin {
 	private final PlayerDeath playerDeathListener = new PlayerDeath();
 	private final SetPosition setPositionListener = new SetPosition();
 	private final SignInteract signInteractListener = new SignInteract();
+	private final PlayerLeave playerLeaveListener = new PlayerLeave();
 
 	//Spawn locations
 	public static Location towerLocation;
@@ -52,6 +54,7 @@ public class main extends JavaPlugin {
 		getServer().getPluginManager().registerEvents(playerDeathListener, this);
 		getServer().getPluginManager().registerEvents(setPositionListener, this);
 		getServer().getPluginManager().registerEvents(signInteractListener, this);
+		getServer().getPluginManager().registerEvents(playerLeaveListener, this);
 		Config.LoadConfig();
 		System.out.print("[FFA Extra] Succesfully enabled.");
 	}
@@ -89,6 +92,7 @@ public class main extends JavaPlugin {
 				}
 
 				if(args.length == 0){
+					Custody.switchCustody(player);
 					SetPlayerTower(player);
 					return true;
 				}
